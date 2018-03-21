@@ -16,9 +16,14 @@
 
 import * as d3 from "d3";
 import { createCanvas, Image } from "./im";
-import { Progress } from "./types";
 
 export type PlotData = Array<Array<{ x: number, y: number }>>;
+
+export interface Progress {
+  job: string;
+  loaded: number | null;
+  total: number | null;
+}
 
 export interface OutputHandler {
   imshow(image: Image): void;
