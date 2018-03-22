@@ -129,7 +129,7 @@ testBrowser(async function notebook_deleteLastCell() {
 });
 
 // Call this to ensure that the DOM has been updated after events.
-function flush() {
+function flush(): Promise<void> {
   rerender();
   return Promise.resolve();
 }

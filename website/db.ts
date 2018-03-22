@@ -252,7 +252,8 @@ export class DatabaseMock implements Database {
     this.inc("subscribeAuthChange");
     this.authChangeCallbacks.push(cb);
     return () => {
-      this.authChangeCallbacks = [];
+      const i = this.authChangeCallbacks.indexOf(cb);
+      this.authChangeCallbacks.splice(i, 1);
     };
   }
 }

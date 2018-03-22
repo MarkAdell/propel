@@ -233,8 +233,7 @@ export class Cell extends Component<CellProps, CellState> {
   // state like this.
   shouldComponentUpdate(nextProps, nextState) {
     const propChanged = (name) =>
-      (this.props[name] == null && nextProps[name] != null) ||
-      (this.props[name] != null && nextProps[name] == null);
+      (this.props[name] == null) !== (nextProps[name] == null);
     if (propChanged("onDelete") || propChanged("onInsertCell")) {
       return true;
     } else {
@@ -648,17 +647,17 @@ export class Notebook extends Component<NotebookProps, NotebookState> {
 
       const titleEdit = h("div", { class: "title" },
         h("input", {
-          "class": "title-input",
-          "ref": ref => { this.titleInput = ref as HTMLInputElement; },
-          "value": doc.title,
+          class: "title-input",
+          ref: ref => { this.titleInput = ref as HTMLInputElement; },
+          value: doc.title,
         }),
         h("button", {
-          "class": "save-title green-button",
-          "onClick": () => this.onSaveTitle(doc)
+          class: "save-title green-button",
+          onClick: () => this.onSaveTitle(doc)
         }, "Save"),
         h("button", {
-          "class": "cancel-edit-title",
-          "onClick": () => this.setState({ editingTitle: false })
+          class: "cancel-edit-title",
+          onClick: () => this.setState({ editingTitle: false })
         }, "Cancel")
       );
 
